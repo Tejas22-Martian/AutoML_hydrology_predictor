@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Tests (kept out of the public repo)
+tests/
+.pytest_cache/
+
+# Helper / scratch files (not part of the deliverable)
+PROJECT_SUMMARY.md
+finish_run.py
+DEPLOY.md
+run_vps.sh
+Dockerfile
+.dockerignore
+requirements-docker.txt
+
+# Raw dataset (do not ship CAMELS-IND data)
+data/raw/
+data/processed/
+data/external/
+
+# Inference scratch output
+predictions.csv
+
+# Misc
+.ipynb_checkpoints/
+.DS_Store
+*.log
+
+# NOTE: outputs/ (fine-tuned model + reports + figures + risk maps) IS committed
+# as the deliverable result — it is intentionally not ignored.

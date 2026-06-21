@@ -1,0 +1,187 @@
+models:
+  random_forest:
+    enabled: true
+    base_params:
+      random_state: 42
+    search_space:
+      n_estimators:
+        type: int
+        low: 100
+        high: 400
+      max_depth:
+        type: int
+        low: 5
+        high: 25
+      min_samples_split:
+        type: int
+        low: 2
+        high: 20
+      min_samples_leaf:
+        type: int
+        low: 1
+        high: 10
+      max_features:
+        type: categorical
+        choices: ["sqrt", "log2", 0.5]
+
+  xgboost:
+    enabled: true
+    base_params:
+      random_state: 42
+      tree_method: "hist"
+    search_space:
+      n_estimators:
+        type: int
+        low: 100
+        high: 1000
+      max_depth:
+        type: int
+        low: 3
+        high: 15
+      learning_rate:
+        type: float
+        low: 0.01
+        high: 0.3
+        log: true
+      subsample:
+        type: float
+        low: 0.6
+        high: 1.0
+      colsample_bytree:
+        type: float
+        low: 0.6
+        high: 1.0
+      reg_alpha:
+        type: float
+        low: 0.0001
+        high: 10.0
+        log: true
+      reg_lambda:
+        type: float
+        low: 0.0001
+        high: 10.0
+        log: true
+
+  lightgbm:
+    enabled: true
+    base_params:
+      random_state: 42
+      verbose: -1
+    search_space:
+      n_estimators:
+        type: int
+        low: 100
+        high: 1000
+      num_leaves:
+        type: int
+        low: 20
+        high: 150
+      max_depth:
+        type: int
+        low: 3
+        high: 15
+      learning_rate:
+        type: float
+        low: 0.01
+        high: 0.3
+        log: true
+      subsample:
+        type: float
+        low: 0.6
+        high: 1.0
+      colsample_bytree:
+        type: float
+        low: 0.6
+        high: 1.0
+      min_child_samples:
+        type: int
+        low: 5
+        high: 50
+
+  # SVM (SVR) is O(n^2) in samples and intractable on the pooled multi-catchment
+  # training set (>100k rows). Disabled by default for a tractable deliverable run;
+  # re-enable for a small-subsample experiment.
+  svm:
+    enabled: false
+    base_params: {}
+    search_space:
+      C:
+        type: float
+        low: 0.01
+        high: 100.0
+        log: true
+      epsilon:
+        type: float
+        low: 0.001
+        high: 1.0
+        log: true
+      kernel:
+        type: categorical
+        choices: ["rbf", "poly"]
+      gamma:
+        type: categorical
+        choices: ["scale", "auto"]
+
+  neural_network:
+    enabled: true
+    base_params:
+      random_state: 42
+      max_iter: 300
+      early_stopping: true
+      n_iter_no_change: 10
+    search_space:
+      hidden_layer_config:
+        type: categorical
+        choices:
+          - [64, 32]
+          - [128, 64]
+          - [128, 64, 32]
+      activation:
+        type: categorical
+        choices: ["relu", "tanh"]
+      learning_rate_init:
+        type: float
+        low: 0.0001
+        high: 0.01
+        log: true
+      alpha:
+        type: float
+        low: 0.0001
+        high: 0.1
+        log: true
+      batch_size:
+        type: categorical
+        choices: [32, 64, 128, 256]
+
+  # LSTM: state-of-the-art recurrent network for rainfall-runoff modelling.
+  # Enabled for the deep-learning comparison. Requires PyTorch; uses CUDA
+  # automatically when a GPU is present (see Docker/GPU deployment).
+  lstm:
+    enabled: true
+    base_params:
+      max_epochs: 40
+      patience: 6
+      random_state: 42
+    search_space:
+      lookback:
+        type: categorical
+        choices: [10, 20, 30]
+      hidden_size:
+        type: categorical
+        choices: [32, 64]
+      num_layers:
+        type: int
+        low: 1
+        high: 2
+      dropout:
+        type: float
+        low: 0.0
+        high: 0.4
+      learning_rate:
+        type: float
+        low: 0.0005
+        high: 0.01
+        log: true
+      batch_size:
+        type: categorical
+        choices: [256, 512]

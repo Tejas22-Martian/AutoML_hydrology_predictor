@@ -1,0 +1,29 @@
+# Core (pinned upper bounds to avoid numpy 2.2+/pandas 3.x breakage in the ML stack)
+numpy>=1.26,<2.2
+pandas>=2.1,<2.3
+scipy>=1.11.0
+scikit-learn>=1.3.0
+joblib>=1.3.0
+pyyaml>=6.0
+tqdm>=4.66.0
+
+# AutoML + interpretability
+optuna>=3.4.0
+xgboost>=2.0.0
+lightgbm>=4.0.0
+shap>=0.42.0
+
+# Visualization + geospatial risk maps
+matplotlib>=3.7.0
+seaborn>=0.12.0
+geopandas>=0.14.0
+folium>=0.15.0
+
+# Testing
+pytest>=7.4.0
+
+# Optional (graceful degradation if absent):
+#   torch  -> enables the LSTM deep-learning model (configs/model_configs.yaml: lstm)
+#   smogn  -> SMOGN imbalance handling; a manual oversampling fallback is used otherwise
+torch>=2.0.0
+smogn>=0.1.2

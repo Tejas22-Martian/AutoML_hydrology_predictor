@@ -1,0 +1,90 @@
+{
+  "total_catchments": 242,
+  "flood_risk_distribution": {
+    "High": 92,
+    "Very High": 83,
+    "Moderate": 67
+  },
+  "drought_risk_distribution": {
+    "High": 115,
+    "Moderate": 94,
+    "Very High": 33
+  },
+  "basin_summary": {
+    "Brahmani-Baitarani": {
+      "n_catchments": 8,
+      "mean_flood_risk": 0.7767,
+      "mean_drought_risk": 0.6737
+    },
+    "Cauvery": {
+      "n_catchments": 21,
+      "mean_flood_risk": 0.6272,
+      "mean_drought_risk": 0.6183
+    },
+    "EFRN": {
+      "n_catchments": 5,
+      "mean_flood_risk": 0.7377,
+      "mean_drought_risk": 0.6345
+    },
+    "EFRS": {
+      "n_catchments": 12,
+      "mean_flood_risk": 0.5788,
+      "mean_drought_risk": 0.5731
+    },
+    "Godavari": {
+      "n_catchments": 50,
+      "mean_flood_risk": 0.7232,
+      "mean_drought_risk": 0.6266
+    },
+    "Krishna": {
+      "n_catchments": 41,
+      "mean_flood_risk": 0.7029,
+      "mean_drought_risk": 0.5889
+    },
+    "Mahanadi": {
+      "n_catchments": 19,
+      "mean_flood_risk": 0.7888,
+      "mean_drought_risk": 0.6476
+    },
+    "Mahi": {
+      "n_catchments": 7,
+      "mean_flood_risk": 0.7128,
+      "mean_drought_risk": 0.7712
+    },
+    "Narmada": {
+      "n_catchments": 18,
+      "mean_flood_risk": 0.8014,
+      "mean_drought_risk": 0.7623
+    },
+    "Pennar": {
+      "n_catchments": 7,
+      "mean_flood_risk": 0.5498,
+      "mean_drought_risk": 0.4833
+    },
+    "Sabarmati": {
+      "n_catchments": 5,
+      "mean_flood_risk": 0.6545,
+      "mean_drought_risk": 0.7275
+    },
+    "Subernarekha": {
+      "n_catchments": 4,
+      "mean_flood_risk": 0.8158,
+      "mean_drought_risk": 0.6839
+    },
+    "Tapi": {
+      "n_catchments": 10,
+      "mean_flood_risk": 0.6036,
+      "mean_drought_risk": 0.6469
+    },
+    "WFRN": {
+      "n_catchments": 10,
+      "mean_flood_risk": 0.9752,
+      "mean_drought_risk": 0.6876
+    },
+    "WFRS": {
+      "n_catchments": 25,
+      "mean_flood_risk": 0.8148,
+      "mean_drought_risk": 0.7547
+    }
+  }
+}

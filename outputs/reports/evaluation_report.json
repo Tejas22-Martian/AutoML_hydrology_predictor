@@ -1,0 +1,81 @@
+{
+  "neural_network": {
+    "model_name": "neural_network",
+    "overall_metrics": {
+      "nse": 0.9898,
+      "kge": 0.9911,
+      "rmse": 3.6953,
+      "pbias": -0.7268,
+      "r2": 0.9898
+    },
+    "extreme_event_metrics": {
+      "overall": {
+        "nse": 0.9898,
+        "kge": 0.9911,
+        "rmse": 3.6953,
+        "pbias": -0.7268,
+        "r2": 0.9898
+      },
+      "flood_events": {
+        "nse": 0.9896,
+        "kge": 0.9934,
+        "rmse": 16.4423,
+        "pbias": -0.4102,
+        "r2": 0.9896,
+        "n_events": 14532
+      },
+      "drought_events": {
+        "nse": 0.0,
+        "kge": -0.7321,
+        "rmse": 0.0696,
+        "pbias": 0.0,
+        "r2": 0.0,
+        "n_events": 94621
+      }
+    },
+    "flow_regime_metrics": {
+      "below_median": {
+        "nse": -896.8383,
+        "kge": -28.0122,
+        "rmse": 0.4285,
+        "pbias": -134.8915,
+        "r2": -896.8383,
+        "n_samples": 145304
+      },
+      "above_median": {
+        "nse": -7.8125,
+        "kge": -1.2496,
+        "rmse": 0.2856,
+        "pbias": 5.3362,
+        "r2": -7.8125,
+        "n_samples": 72654
+      },
+      "high": {
+        "nse": 0.5298,
+        "kge": 0.7123,
+        "rmse": 0.3104,
+        "pbias": -1.4828,
+        "r2": 0.5298,
+        "n_samples": 43591
+      },
+      "very_high": {
+        "nse": 0.9857,
+        "kge": 0.9879,
+        "rmse": 11.5606,
+        "pbias": -0.5554,
+        "r2": 0.9857,
+        "n_samples": 29061
+      }
+    },
+    "hydrological_signatures": {
+      "log_nse": 0.9537,
+      "fhv_high_flow_bias_pct": 0.32,
+      "flv_low_flow_bias_pct": 0.0,
+      "fms_mid_slope_bias_pct": -11.65,
+      "bfi_observed": 0.3267,
+      "bfi_predicted": 0.3299,
+      "peak_timing_hit_rate": 0.9967
+    },
+    "n_test_samples": 290611
+  }
+}

@@ -1,0 +1,150 @@
+project:
+  name: AutoML-HYDRO - CAMELS-IND Streamflow & Risk
+  version: 2.0.0
+  seed: 42
+data:
+  fosee_root: data/sample
+  forcings_dir: data/sample/catchment_mean_forcings
+  streamflow_file: data/sample/streamflow_timeseries/streamflow_observed.csv
+  lstm_pred_file: null
+  attributes_dir: data/sample/attributes_csv
+  shapefile: null
+  target_column: streamflow_mm_day
+  date_column: date
+  focus_basins:
+  - Krishna
+  - Godavari
+  - Cauvery
+  - Mahanadi
+  report_all_catchments: true
+  min_train_samples: 1095
+  train_start: '1990-01-01'
+  train_end: '2010-12-31'
+  test_start: '2011-01-01'
+  test_end: '2020-12-31'
+preprocessing:
+  missing_value_strategy: interpolate
+  interpolation_method: linear
+  max_missing_pct: 0.3
+  normalization: standard
+  smogn:
+    enabled: false
+    relevance_threshold: 0.9
+    over_sampling_pct: 0.5
+    under_sampling_pct: 0.5
+    k_neighbors: 5
+features:
+  lag_days:
+  - 1
+  - 2
+  - 3
+  - 5
+  - 7
+  - 14
+  - 30
+  rolling_windows:
+  - 3
+  - 7
+  - 14
+  - 30
+  rolling_statistics:
+  - mean
+  - std
+  - min
+  - max
+  seasonal:
+    encode_method: cyclical
+  meteorological_features:
+  - precipitation_mm
+  - temperature_max_c
+  - temperature_min_c
+  - temperature_avg_c
+  - relative_humidity_pct
+  - wind_speed_ms
+  - solar_radiation_wm2
+  - pet_mm
+  - aet_mm
+  - soil_moisture_l1
+  - soil_moisture_l2
+  - soil_moisture_l3
+  - soil_moisture_l4
+  catchment_attributes:
+  - area_km2
+  - elev_mean
+  - slope_mean
+  - dpsbar
+  - p_mean
+  - pet_mean
+  - aridity_index
+  - p_seasonality
+  - high_prec_freq
+  - low_prec_freq
+  - trees_frac
+  - crops_frac
+  - built_area_frac
+  - bare_frac
+  - lai_mean
+  - soil_depth
+  - sand_frac_top
+  - clay_frac_top
+  - soil_awc_top
+  - soil_conductivity_top
+  - wtd
+  - geol_porosity
+  - geol_permeability
+  - carb_rocks_frac
+  - reservoir_index
+  - irrigation_frac
+  - pop_density
+  - urban_frac
+training:
+  cv_folds: 5
+  cv_strategy: time_series_split
+  optimization_metric: neg_nse
+  n_optimization_trials: 100
+  early_stopping_rounds: 20
+  n_jobs: -1
+  use_deliverable_profile: true
+  deliverable:
+    n_optimization_trials: 3
+    cv_folds: 2
+    max_train_rows: 20000
+evaluation:
+  metrics:
+  - nse
+  - kge
+  - rmse
+  - pbias
+  - r2
+  extreme_event_thresholds:
+    flood:
+      percentile: 95
+    drought:
+      percentile: 5
+  interval_lower: 0.05
+  interval_upper: 0.95
+  benchmark_lstm: true
+risk_mapping:
+  risk_levels:
+  - Very Low
+  - Low
+  - Moderate
+  - High
+  - Very High
+  flood_risk_quantiles:
+  - 0.2
+  - 0.4
+  - 0.6
+  - 0.8
+  drought_risk_quantiles:
+  - 0.2
+  - 0.4
+  - 0.6
+  - 0.8
+  output_format: geojson
+  crs: EPSG:4326
+output:
+  models_dir: outputs/models
+  figures_dir: outputs/figures
+  risk_maps_dir: outputs/risk_maps
+  reports_dir: outputs/reports

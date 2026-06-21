@@ -1,0 +1,6 @@
+{
+  "nominal_coverage": 0.9,
+  "picp_observed_coverage": 0.9734,
+  "mpiw_mean_interval_width": 1.4266,
+  "coverage_error": 0.0734
+}
