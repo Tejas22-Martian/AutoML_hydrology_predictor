@@ -92,7 +92,7 @@ pip install -r requirements.txt
 
 ### Full Pipeline
 
-The pipeline runs **entirely on the real CAMELS-IND (FOSEE) dataset** — there is
+The pipeline runs **entirely on the real CAMELS-IND dataset** — there is
 no synthetic data. It expects the dataset next to the repo at
 `../FOSEE/CAMELS_IND_Catchments_Streamflow_Sufficient/` (configurable in
 `configs/config.yaml`).
